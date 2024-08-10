@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Manish/Mlops-proj/mlruns/0/c8ae2f76684d45ed875c706821a330f1/artifacts
+end_time: 1723318791695
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c8ae2f76684d45ed875c706821a330f1
+run_name: peaceful-toad-331
+run_uuid: c8ae2f76684d45ed875c706821a330f1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723318784191
+status: 3
+tags: []
+user_id: Mishu
