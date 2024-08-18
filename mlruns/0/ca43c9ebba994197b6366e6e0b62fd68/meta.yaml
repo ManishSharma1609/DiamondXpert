@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Manish/Mlops-proj/mlruns/0/ca43c9ebba994197b6366e6e0b62fd68/artifacts
+end_time: 1723887699663
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ca43c9ebba994197b6366e6e0b62fd68
+run_name: hilarious-pug-223
+run_uuid: ca43c9ebba994197b6366e6e0b62fd68
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723887687951
+status: 3
+tags: []
+user_id: Mishu

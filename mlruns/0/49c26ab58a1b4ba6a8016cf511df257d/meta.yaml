@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/Manish/Mlops-proj/mlruns/0/49c26ab58a1b4ba6a8016cf511df257d/artifacts
+end_time: 1723808047972
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 49c26ab58a1b4ba6a8016cf511df257d
+run_name: casual-owl-93
+run_uuid: 49c26ab58a1b4ba6a8016cf511df257d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1723808037019
+status: 3
+tags: []
+user_id: Mishu
