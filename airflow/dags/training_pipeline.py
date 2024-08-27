@@ -41,6 +41,62 @@ with DAG(
         test_arr = np.array(data_transformation_artifacts["test_arr"])
         training_pipeline.start_model_training(train_arr, test_arr)
 
-    def push_to_s3(**kwargs):
+    def push_data_to_s3(**kwargs):
         import os
+        import boto3
+        from dotenv import load_dotenv
+
+        load_dotenv()
+
+        s3 = boto3.client("s3")
+
         bucket_name = os.getenv("BUCKET_NAME")
+        print(bucket_name)
+
+        path = "./artifacts/"
+
+        for root, dir, files in os.walk(path):
+            for file in files:
+                s3.upload_file(os.path.join(root, file), bucket_name, file) 
+
+    data_ingestion_task = PythonOperator(
+        task_id="data_ingestion",
+        python_callable=data_ingestion,
+    )
+    data_ingestion_task.doc_md = dedent(
+        """\
+    #### Ingestion task
+    this task creates a train and test file.
+    """
+    )
+
+    data_transform_task = PythonOperator(
+        task_id="data_transformation",
+        python_callable=data_transformation,
+    )
+    data_transform_task.doc_md = dedent(
+        """\
+    #### Transformation task
+    this task performs the transformation
+    """
+    )
+
+    model_trainer_task = PythonOperator(
+        task_id="model_trainer",
+        python_callable=model_trainer,
+    )
+    model_trainer_task.doc_md = dedent(
+        """\
+    #### model trainer task
+    this task perform training
+    """
+    )
+    
+   
+    push_data_to_s3_task = PythonOperator(
+        task_id="push_data_to_s3",
+        python_callable=push_data_to_s3
+        )
+
+
+data_ingestion_task >> data_transform_task >> model_trainer_task >> push_data_to_s3_task

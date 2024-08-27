@@ -37,7 +37,7 @@ class TrainingPipeline:
     def start_data_transformation(self, train_data_path, test_data_path):
         try:
             data_Transformation = dataTransformation()
-            train_arr, test_arr = dataTransformation.initiate_data_transformation(train_data_path, test_data_path)
+            train_arr, test_arr = data_Transformation.initiate_data_transformation(train_data_path, test_data_path)
             return train_arr, test_arr
         
         except Exception as e:
