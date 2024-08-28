@@ -43,21 +43,10 @@ with DAG(
 
     def push_data_to_s3(**kwargs):
         import os
-        import boto3
-        from dotenv import load_dotenv
+        bucket_name="gemstone.artifacts.bucket"
+        artifact_folder="/app/artifacts"
 
-        load_dotenv()
-
-        s3 = boto3.client("s3")
-
-        bucket_name = os.getenv("BUCKET_NAME")
-        print(bucket_name)
-
-        path = "./artifacts/"
-
-        for root, dir, files in os.walk(path):
-            for file in files:
-                s3.upload_file(os.path.join(root, file), bucket_name, file) 
+        os.system(f"aws s3 sync {artifact_folder} s3://{bucket_name}/artifact")
 
     data_ingestion_task = PythonOperator(
         task_id="data_ingestion",

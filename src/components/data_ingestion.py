@@ -7,7 +7,6 @@ import os
 import sys
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
-from pathlib import Path
 
 @dataclass
 class dataIngestionConfig:
@@ -22,7 +21,7 @@ class dataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Data ingestion started")
         try:
-            data = pd.read_csv("dataset/raw.csv")
+            data = pd.read_csv("/app/dataset/raw.csv")
             logging.info("Reading a DF")
 
             os.makedirs(os.path.dirname(os.path.join(self.ingestion_config.raw_data_path)),exist_ok=True)
