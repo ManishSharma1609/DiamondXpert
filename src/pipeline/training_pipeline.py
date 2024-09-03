@@ -59,4 +59,6 @@ class TrainingPipeline:
 
         except Exception as e:
             logging.info(e,sys)
-
+if __name__ == "__main__":
+    obj = TrainingPipeline()
+    obj.start_training()

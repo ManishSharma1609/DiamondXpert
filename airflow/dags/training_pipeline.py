@@ -47,6 +47,8 @@ with DAG(
         artifact_folder="/app/artifacts"
 
         os.system(f"aws s3 sync {artifact_folder} s3://{bucket_name}/artifact")
+        os.system("dvc repro")
+        os.system(f"aws s3 sync dvc.lock s3://{bucket_name}")
 
     data_ingestion_task = PythonOperator(
         task_id="data_ingestion",
