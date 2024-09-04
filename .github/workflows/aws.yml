@@ -31,7 +31,7 @@ on:
     branches: [ "main" ]
 
 env:
-  AWS_REGION: ap-south-1                  # set this to your preferred AWS region, e.g. us-west-1
+  AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}                  # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: gemstone-prediction-server           # set this to your Amazon ECR repository name
   ECS_SERVICE:  diamondprice-api-service                # set this to your Amazon ECS service name
   ECS_CLUSTER: priceprediction-dev-server-cluster                 # set this to your Amazon ECS cluster name
@@ -54,7 +54,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_DEFAULT_REGION }}
+        aws-region: ${{ env.AWS_REGION }}
 
     - name: Login to Amazon ECR
       id: login-ecr
