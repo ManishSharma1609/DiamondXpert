@@ -5,4 +5,6 @@ COPY . /app
 RUN apt update -y
 
 RUN apt-get update && pip install -r requirements_dev.txt
+
+
 CMD ["python", "app.py"]
